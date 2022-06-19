@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.maochunjie.mhwanalytics">
+
+    <uses-sdk tools:overrideLibrary="com.huawei.agconnect.credential,com.huawei.agconnect.core,com.huawei.agconnect.https,com.huawei.agconnect.datastore" />
+    <application>
+        <meta-data
+            android:name="com.huawei.agconnect.AccessNetwork"
+            android:value="false" />
+        <meta-data
+            android:name="install_channel"
+            android:value="${HW_APP_CHANNEL}" />
+    </application>
+</manifest>
