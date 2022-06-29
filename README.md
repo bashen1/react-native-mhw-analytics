@@ -33,6 +33,18 @@ MhwAnalyticsModule.initializeSDK(this);
 
 ```
 
+## 接口
+
+### onEvent
+
+记录上报埋点
+
+android only
+
+```javascript
+onEvent(eventName, eventParams)
+```
+
 ## License
 
 MIT
