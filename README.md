@@ -27,13 +27,29 @@ manifestPlaceholders = [
 
 ```java
 
-// 华为Analytics SDK初始化
+// 华为Analytics SDK初始化，不需要调用js端的initSDK方法
 MhwAnalyticsModule.setAccessNetwork();
 MhwAnalyticsModule.initializeSDK(this);
 
 ```
 
+也可以调用下面代码，然后在隐私协议之后，在js端调用initSDK()进行SDK初始化
+
+```java
+MhwAnalyticsModule.preInitializeSDK(this);
+```
+
 ## 接口
+
+### initSDK
+
+初始化SDK
+
+android only
+
+```javascript
+initSDK()
+```
 
 ### onEvent
 

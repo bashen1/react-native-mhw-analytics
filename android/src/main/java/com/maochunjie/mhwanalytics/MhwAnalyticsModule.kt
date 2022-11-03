@@ -15,6 +15,14 @@ class MhwAnalyticsModule(reactContext: ReactApplicationContext) : ReactContextBa
     }
 
     @ReactMethod
+    fun initSDK() {
+        if (instance == null) {
+            setAccessNetwork()
+            initializeSDK(applicationContext)
+        }
+    }
+
+    @ReactMethod
     fun onEvent(event: String, rMap: ReadableMap, promise: Promise) {
         try {
             val bundle = mapToBundle(rMap)
@@ -60,9 +68,15 @@ class MhwAnalyticsModule(reactContext: ReactApplicationContext) : ReactContextBa
 
     companion object {
         var instance: HiAnalyticsInstance? = null
+        var applicationContext: Application? = null
 
         @JvmStatic
-        fun initializeSDK(application: Application) {
+        fun preInitializeSDK(application: Application) {
+            applicationContext = application
+        }
+
+        @JvmStatic
+        fun initializeSDK(application: Application?) {
             instance = HiAnalytics.getInstance(application)
         }
 
