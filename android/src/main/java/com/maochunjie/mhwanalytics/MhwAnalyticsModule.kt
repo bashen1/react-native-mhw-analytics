@@ -2,10 +2,13 @@ package com.maochunjie.mhwanalytics
 
 import android.app.Application
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import com.facebook.react.bridge.*
 import com.huawei.agconnect.common.network.AccessNetworkManager
 import com.huawei.hms.analytics.HiAnalytics
 import com.huawei.hms.analytics.HiAnalyticsInstance
+import com.huawei.hms.analytics.HiAnalyticsTools
 
 
 class MhwAnalyticsModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -17,8 +20,11 @@ class MhwAnalyticsModule(reactContext: ReactApplicationContext) : ReactContextBa
     @ReactMethod
     fun initSDK() {
         if (instance == null) {
-            setAccessNetwork()
-            initializeSDK(applicationContext)
+            Handler(Looper.getMainLooper()).post {
+                AccessNetworkManager.getInstance().setAccessNetwork(true)
+                // HiAnalyticsTools.enableLog()
+                instance = HiAnalytics.getInstance(reactApplicationContext)
+            }
         }
     }
 
@@ -68,15 +74,10 @@ class MhwAnalyticsModule(reactContext: ReactApplicationContext) : ReactContextBa
 
     companion object {
         var instance: HiAnalyticsInstance? = null
-        var applicationContext: Application? = null
-
-        @JvmStatic
-        fun preInitializeSDK(application: Application) {
-            applicationContext = application
-        }
 
         @JvmStatic
         fun initializeSDK(application: Application?) {
+            // HiAnalyticsTools.enableLog()
             instance = HiAnalytics.getInstance(application)
         }
 

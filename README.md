@@ -33,11 +33,7 @@ MhwAnalyticsModule.initializeSDK(this);
 
 ```
 
-也可以调用下面代码，然后在隐私协议之后，在js端调用initSDK()进行SDK初始化
-
-```java
-MhwAnalyticsModule.preInitializeSDK(this);
-```
+也可以在js端调用initSDK()进行SDK初始化
 
 ## 接口
 
