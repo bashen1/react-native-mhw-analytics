@@ -1,6 +1,6 @@
 {
   "name": "react-native-mhw-analytics",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "华为分析服务，目前业务需要只做到android初始化",
   "main": "index.js",
   "scripts": {
